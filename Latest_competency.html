@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IB DP Chemistry Tools Section Breakdown</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div id="chart"></div>
+    <script>
+        const data = [{
+            type: "sunburst",
+            labels: [
+                "IB DP Chemistry Tools",
+                "T1: Experimental techniques", "T2: Technology", "T3: Mathematics",
+                "Addressing safety (T1.1)", "Measuring variables", "Applying techniques",
+                "Mass (T1.2a)", "Volume (T1.2b)", "Time (T1.2c)", "Temperature (T1.2d)", "Length (T1.2e)", "pH (T1.2f)", "Electric current (T1.2g)", "Electric potential (T1.2h)",
+                "Preparing solution (T1.3a)", "Carrying out dilutions (T1.3b)", "Drying to mass (T1.3c)", "Distillation and reflux (T1.3d)", "Chromatography (T1.3e)", "Separation (T1.3f)", "Calorimetry (T1.3g)", "Titration (T1.3h)", "Electrochemical cells (T1.3i)", "Colorimetry (T1.3j)", "Modelling (T1.3k)", "Recrystallization (T1.3l)", "Melting point (T1.3m)",
+                "Collecting data", "Processing data", "Sensors (T2.1a)", "Databases (T2.1b)", "Models (T2.1c)", "Spreadsheets (T2.2a)", "Graphs (T2.2b)",
+                "T3.1: Applying general math", "T3.2: Using units & symbols", "T3.3: Processing uncertainties", "T3.4: Graphing",
+                "T3.1a: Basic arithmetic", "T3.1b: Decimals, fractions", "T3.1c: Logarithmic functions", "T3.1d: Exponential (HL)", "T3.1e: Rates from data", "T3.1f: Calculate mean/range", "T3.1g: Scientific notation", "T3.1h: Approximation", "T3.1i: Ignore effects", "T3.1j: Nearest magnitude", "T3.1k: Direct/inverse prop", "T3.1l: Calculate % change", "T3.1m: Calculate % error", "T3.1n: Continuous/discrete",
+                "T3.2a: Apply SI units", "T3.2b: Identify symbols", "T3.2c: Express sig figs",
+                "T3.3a: Understand uncert.", "T3.3b: Record uncertainties", "T3.3c: Propagate uncert.", "T3.3d: Express uncertainties",
+                "T3.4a: Sketch unscaled", "T3.4b: Interpret tables", "T3.4c: Plot linear/non-linear", "T3.4d: Best fit lines", "T3.4e: Interpret features", "T3.4f: Uncertainty bars", "T3.4g: Extrapolate/interp."
+            ],
+            parents: [
+                "", "IB DP Chemistry Tools", "IB DP Chemistry Tools", "IB DP Chemistry Tools",
+                "T1: Experimental techniques", "T1: Experimental techniques", "T1: Experimental techniques",
+                "Measuring variables", "Measuring variables", "Measuring variables", "Measuring variables", "Measuring variables", "Measuring variables", "Measuring variables", "Measuring variables",
+                "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques",
+                "T2: Technology", "T2: Technology", "Collecting data", "Collecting data", "Collecting data", "Processing data", "Processing data",
+                "T3: Mathematics", "T3: Mathematics", "T3: Mathematics", "T3: Mathematics",
+                "T3.1: Applying general math", "T3.1: Applying general math", "T3.1: Applying general math", "T3.1: Applying general math", "T3.1: Applying general math", "T3.1: Applying general math", "T3.1: Applying general math", "T3.1: Applying general math", "T3.1: Applying general math", "T3.1: Applying general math", "T3.1: Applying general math", "T3.1: Applying general math", "T3.1: Applying general math", "T3.1: Applying general math",
+                "T3.2: Using units & symbols", "T3.2: Using units & symbols", "T3.2: Using units & symbols",
+                "T3.3: Processing uncertainties", "T3.3: Processing uncertainties", "T3.3: Processing uncertainties", "T3.3: Processing uncertainties",
+                "T3.4: Graphing", "T3.4: Graphing", "T3.4: Graphing", "T3.4: Graphing", "T3.4: Graphing", "T3.4: Graphing", "T3.4: Graphing"
+            ],
+            outsidetextfont: { size: 20, color: "#377eb8" },
+            leaf: { opacity: 0.4 },
+            marker: { line: { width: 1 } }
+        }];
+        const layout = {
+            title: "IB DP Chemistry Tools Section Breakdown",
+            font: {
+                size: 18,
+                color: "black",
+                family: "Arial",
+                weight: "bold"
+            },
+            sunburstcolorway: ["#636efa", "#ef553b", "#00cc96", "#ab63fa", "#19d3f3", "#e763fa", "#fecb52", "#ffa15a", "#ff6692", "#b6e880"],
+            extendsunburstcolorway: true,
+            width: 1000,
+            height: 1000,
+            maxdepth: 0 // Show only the top-level nodes initially
+        };
+        const config = { responsive: true };
+        Plotly.newPlot('chart', data, layout, config).then(function(gd) {
+            gd.on('plotly_sunburstclick', function(data) {
+                Plotly.restyle(gd, 'maxdepth', null); // Remove the maxdepth limit on click
+            });
+        });
+    </script>
+</body>
+</html>
