@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IB DP Chemistry Tools Section Breakdown</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div id="chart"></div>
+    <script>
+        const data = [{
+            type: "sunburst",
+            labels: [
+                "IB DP Chemistry Tools",
+                "T1: Experimental techniques", "T2: Technology", "T3: Mathematics",
+                "Addressing safety (T1.1)", "Measuring variables", "Applying techniques",
+                "Mass (T1.2a)", "Volume (T1.2b)", "Time (T1.2c)", "Temperature (T1.2d)", "Length (T1.2e)", "pH (T1.2f)", "Electric current (T1.2g)", "Electric potential (T1.2h)",
+                "Preparing solution (T1.3a)", "Carrying out dilutions (T1.3b)", "Drying to mass (T1.3c)", "Distillation and reflux (T1.3d)", "Chromatography (T1.3e)", "Separation (T1.3f)", "Calorimetry (T1.3g)", "Titration (T1.3h)", "Electrochemical cells (T1.3i)", "Colorimetry (T1.3j)", "Modelling (T1.3k)", "Recrystallization (T1.3l)", "Melting point (T1.3m)",
+                "Collecting data", "Processing data", "Sensors (T2.1a)", "Databases (T2.1b)", "Models (T2.1c)", "Spreadsheets (T2.2a)", "Graphs (T2.2b)",
+                "General mathematics (T3.1)", "Units and symbols (T3.2)", "Uncertainties (T3.3)", "Graphing",
+                "Sketch graphs (T3.4a)", "Tables and charts (T3.4b)", "Plot graphs (T3.4c)", "Best fit lines (T3.4d)", "Graph features (T3.4e)", "Uncertainty bars (T3.4f)", "Extrapolate (T3.4g)"
+            ],
+            parents: [
+                "", "IB DP Chemistry Tools", "IB DP Chemistry Tools", "IB DP Chemistry Tools",
+                "T1: Experimental techniques", "T1: Experimental techniques", "T1: Experimental techniques",
+                "Measuring variables", "Measuring variables", "Measuring variables", "Measuring variables", "Measuring variables", "Measuring variables", "Measuring variables", "Measuring variables",
+                "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques", "Applying techniques",
+                "T2: Technology", "T2: Technology", "Collecting data", "Collecting data", "Collecting data", "Processing data", "Processing data",
+                "T3: Mathematics", "T3: Mathematics", "T3: Mathematics", "T3: Mathematics",
+                "Graphing", "Graphing", "Graphing", "Graphing", "Graphing", "Graphing", "Graphing"
+            ],
+            outsidetextfont: { size: 20, color: "#377eb8" },
+            leaf: { opacity: 0.4 },
+            marker: { line: { width: 1 } }
+        }];
+
+        const layout = {
+            title: "IB DP Chemistry Tools Section Breakdown",
+            font: {
+                size: 18,
+                color: "black",
+                family: "Arial",
+                weight: "bold"
+            },
+            sunburstcolorway: ["#636efa", "#ef553b", "#00cc96", "#ab63fa", "#19d3f3", "#e763fa", "#fecb52", "#ffa15a", "#ff6692", "#b6e880"],
+            extendsunburstcolorway: true,
+            width: 1000,
+            height: 1000,
+            maxdepth: 2 // Show only the top-level nodes initially
+        };
+
+        const config = { responsive: true };
+
+        Plotly.newPlot('chart', data, layout, config).then(function(gd) {
+            gd.on('plotly_sunburstclick', function(data) {
+                Plotly.restyle(gd, 'maxdepth', null); // Remove the maxdepth limit on click
+            });
+        });
+    </script>
+</body>
+</html>
