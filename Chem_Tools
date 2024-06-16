@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IB DP Chemistry Tools Section Breakdown</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div id="chart"></div>
+    <script>
+        const data = [{
+            type: "sunburst",
+            labels: [
+                "IB DP Chemistry Tools",
+                "Experimental techniques", "Technology", "Mathematics"
+            ],
+            parents: [
+                "", "IB DP Chemistry Tools", "IB DP Chemistry Tools", "IB DP Chemistry Tools"
+            ],
+            outsidetextfont: { size: 20, color: "#377eb8" },
+            leaf: { opacity: 0.4 },
+            marker: { line: { width: 1 } }
+        }];
+
+        const layout = {
+            title: "IB DP Chemistry Tools Section Breakdown",
+            font: {
+                size: 18,
+                color: "black",
+                family: "Arial",
+                weight: "bold"
+            },
+            sunburstcolorway: ["#636efa", "#ef553b", "#00cc96", "#ab63fa", "#19d3f3", "#e763fa", "#fecb52", "#ffa15a", "#ff6692", "#b6e880"],
+            extendsunburstcolorway: true,
+            width: 1000,
+            height: 1000,
+            maxdepth: 2 // Show only the top-level nodes initially
+        };
+
+        const config = { responsive: true };
+
+        Plotly.newPlot('chart', data, layout, config).then(function(gd) {
+            gd.on('plotly_sunburstclick', function(data) {
+                Plotly.restyle(gd, 'maxdepth', null); // Remove the maxdepth limit on click
+            });
+        });
+    </script>
+</body>
+</html>
