@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IB DP Chem Inquiry Section Breakdown</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div id="chart"></div>
+    <script>
+        const data = [{
+            type: "sunburst",
+            labels: [
+                "Inquiry Processes",
+                "I1: Exploring & Designing", "I2: Collecting & Processing", "I3: Concluding & Evaluating",
+                "I1.1: Exploring", "I1.2: Designing", "I1.3: Controlling Vars",
+                "I1.1a: Independent thinking", "I1.1b: Consult sources", "I1.1c: Select sources", "I1.1d: Formulate questions", "I1.1e: Explain predictions",
+                "I1.2a: Demonstrate creativity", "I1.2b: Develop investigations", "I1.2c: Identify variables", "I1.2d: Justify measurements", "I1.2e: Design methodology", "I1.2f: Pilot methodologies",
+                "I1.3a: Calibrate apparatus", "I1.3b: Maintain conditions", "I1.3c: Insulate heat loss/gain",
+                "I2.1: Collecting Data", "I2.2: Processing Data", "I2.3: Interpreting Results",
+                "I2.1a: Record qualitative", "I2.1b: Collect quantitative", "I2.1c: Address issues",
+                "I2.2a: Carry out processing",
+                "I2.3a: Interpret qual/quant", "I2.3b: Interpret diagrams", "I2.3c: Identify patterns", "I2.3d: Justify outliers", "I2.3e: Assess accuracy/etc.",
+                "I3.1: Concluding", "I3.2: Evaluating",
+                "I3.1a: Interpret & justify", "I3.1b: Compare to context", "I3.1c: Relate to question", "I3.1d: Discuss uncertainties",
+                "I3.2a: Evaluate hypotheses", "I3.2b: Identify error sources", "I3.2c: Evaluate weaknesses", "I3.2d: Explain improvements"
+            ],
+            parents: [
+                "", "Inquiry Processes", "Inquiry Processes", "Inquiry Processes",
+                "I1: Exploring & Designing", "I1: Exploring & Designing", "I1: Exploring & Designing",
+                "I1.1: Exploring", "I1.1: Exploring", "I1.1: Exploring", "I1.1: Exploring", "I1.1: Exploring",
+                "I1.2: Designing", "I1.2: Designing", "I1.2: Designing", "I1.2: Designing", "I1.2: Designing", "I1.2: Designing",
+                "I1.3: Controlling Vars", "I1.3: Controlling Vars", "I1.3: Controlling Vars",
+                "I2: Collecting & Processing", "I2: Collecting & Processing", "I2: Collecting & Processing",
+                "I2.1: Collecting Data", "I2.1: Collecting Data", "I2.1: Collecting Data",
+                "I2.2: Processing Data",
+                "I2.3: Interpreting Results", "I2.3: Interpreting Results", "I2.3: Interpreting Results", "I2.3: Interpreting Results", "I2.3: Interpreting Results",
+                "I3: Concluding & Evaluating", "I3: Concluding & Evaluating",
+                "I3.1: Concluding", "I3.1: Concluding", "I3.1: Concluding", "I3.1: Concluding",
+                "I3.2: Evaluating", "I3.2: Evaluating", "I3.2: Evaluating", "I3.2: Evaluating"
+            ],
+            outsidetextfont: { size: 20, color: "#377eb8" },
+            leaf: { opacity: 0.4 },
+            marker: { line: { width: 1 } }
+        }];
+        const layout = {
+            title: "IB DP Chem Inquiry Section Breakdown",
+            font: {
+                size: 18,
+                color: "black",
+                family: "Arial",
+                weight: "bold"
+            },
+            sunburstcolorway: ["#636efa", "#ef553b", "#00cc96", "#ab63fa", "#19d3f3", "#e763fa", "#fecb52", "#ffa15a", "#ff6692", "#b6e880"],
+            extendsunburstcolorway: true,
+            width: 1000,
+            height: 1000,
+            maxdepth: 0 // Show only the top-level nodes initially
+        };
+        const config = { responsive: true };
+        Plotly.newPlot('chart', data, layout, config).then(function(gd) {
+            gd.on('plotly_sunburstclick', function(data) {
+                Plotly.restyle(gd, 'maxdepth', null); // Remove the maxdepth limit on click
+            });
+        });
+    </script>
+</body>
+</html>
