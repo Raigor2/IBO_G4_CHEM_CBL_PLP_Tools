@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IB Science Personalized Learning Plan</title>
+    <style>
+        :root {
+    --ib-blue: #002147;
+    --ib-light-blue: #7FAFD4;
+    --ib-red: #C52127;
+    --ib-white: #FFFFFF;
+    --ib-gray: #F4F4F4;
+}
+        body {
+    font-family: Arial, sans-serif;
+    color: var(--ib-blue);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid var(--ib-blue);
+    border-radius: 10px;
+    background-color: var(--ib-white);
+}
+       header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--ib-blue);
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+    margin: -20px -20px 20px -20px;
+}
+
+.logo {
+    width: 100px;
+    height: 50px;
+    background-color: var(--ib-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: var(--ib-blue);
+    font-weight: bold;
+}
+       
+       h1 {
+    color: var(--ib-blue);
+    text-align: center;
+    border-bottom: 2px solid var(--ib-red);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+h3 {
+    color: var(--ib-red);
+    border-bottom: 1px solid var(--ib-light-blue);
+    padding-bottom: 5px;
+}
+        .info-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .info-section input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+    @media (max-width: 600px) {
+        .info-section {
+            grid-template-columns: 1fr;
+        }
+    }
+        
+        button {
+    background-color: var(--ib-blue);
+    color: var(--ib-white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--ib-light-blue);
+}
+        .development-areas {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .area {
+            flex: 1;
+            margin: 0 10px;
+        }
+        select, input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid var(--ib-light-blue);
+    border-radius: 4px;
+    background-color: var(--ib-gray);
+}
+        .goals-section {
+            margin-top: 20px;
+        }
+        .reflection-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .reflection {
+            width: 48%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="https://www.ibo.org/globalassets/new-structure/digital-toolkit/images/dp-programme-logo-en.png" alt="Logo 1" style="width: 100%; height: 100%; object-fit: contain;"></div>
+        <div class="logo"><img src="https://dekalbschoolsga.blob.core.windows.net/wpcontent/2024/04/dcss-logo-mobile2.jpg" alt="Logo 2" style="width: 100%; height: 100%; object-fit: contain;"></div>
+        <div class="logo"><img src="https://www.druidhillshs.dekalb.k12.ga.us/sysimages/logo.png" alt="Logo 3" style="width: 100%; height: 100%; object-fit: contain;"></div>
+    </header>
+    
+    <h1>IB Personalized Learning Plan</h1>
+    
+    <div class="info-section">
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="term" placeholder="Term">
+        <input type="text" id="grade" placeholder="Grade">
+        <input type="date" id="date" placeholder="Date">
+        <input type="text" id="school" placeholder="School">
+        <input type="text" id="subject" placeholder="Subject">
+    </div>
+
+    <div class="development-areas">
+        <div class="area">
+            <h3>Tools (A)</h3>
+            <select id="toolSelect" onchange="updateSecondDropdown('tool')">
+                <option value="">Choose a tool...</option>
+                <option value="tool1">Tool 1: Experimental techniques</option>
+                <option value="tool2">Tool 2: Technology</option>
+                <option value="tool3">Tool 3: Mathematics</option>
+            </select>
+            <select id="toolElementSelect">
+                <option value="">Choose an element...</option>
+            </select>
+        </div>
+        <div class="area">
+            <h3>Inquiry (B)</h3>
+            <select id="inquirySelect" onchange="updateSecondDropdown('inquiry')">
+                <option value="">Choose an inquiry area...</option>
+                <option value="I1">I1: Exploring and Designing</option>
+                <option value="I2">I2: Collecting and Processing Data</option>
+                <option value="I3">I3: Concluding and Evaluating</option>
+            </select>
+            <select id="inquiryElementSelect">
+                <option value="">Choose an element...</option>
+            </select>
+        </div>
+        <div class="area">
+            <h3>Core Content (C)</h3>
+            <select id="contentSelect" onchange="updateSecondDropdown('content')">
+                <option value="">Choose a content area...</option>
+                <option value="S1">Structure 1</option>
+                <option value="S2">Structure 2</option>
+                <option value="S3">Structure 3</option>
+                <option value="R1">Reactivity 1</option>
+                <option value="R2">Reactivity 2</option>
+                <option value="R3">Reactivity 3</option>
+            </select>
+            <select id="contentElementSelect" onchange="updateStandardElements()">
+                <option value="">Choose an element...</option>
+            </select>
+            <select id="standardElementSelect">
+                <option value="">Choose a standard element...</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="goals-section">
+        <h3>Student Goals / Action Steps</h3>
+        <select id="goalElementSelect">
+            <option value="">Select a modality...</option>
+            <option value="Independent Learning">Independent Learning</option>
+            <option value="After-School Tutoring">After-School Tutoring</option>
+            <option value="Group Study">Group Study</option>
+            <option value="Online Resources">Online Resources</option>
+            <option value="Classroom Activities">Classroom Activities</option>
+            <option value="Peer Tutoring">Peer Tutoring</option>
+            <option value="Other">Other</option>
+        </select>
+        <input type="text" id="goal" placeholder="Goal / What to understand?">
+        <input type="text" id="task" placeholder="How? / What to Do!">
+       <label for="achievementDate">Due Date</label>
+<input type="date" id="achievementDate">
+
+        <textarea id="needs" placeholder="What do I need?"></textarea>
+    </div>
+
+    <div class="reflection-section">
+        <div class="reflection">
+            <h3>Student Reflection</h3>
+            <textarea id="studentReflection"></textarea>
+        </div>
+        <div class="reflection">
+            <h3>Teacher Reflection</h3>
+            <textarea id="teacherReflection"></textarea>
+        </div>
+    </div>
+
+    <button onclick="generatePDF()">Download as PDF</button>
+    <button onclick="downloadImage()">Download as Image</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        const toolElements = {
+            tool1: [
+                "T1.1 Addressing safety of self, others and the environment",
+                "T1.2 Measuring variables",
+                "T1.2a Mass",
+                "T1.2b Volume",
+                "T1.2c Time",
+                "T1.2d Temperature",
+                "T1.2e Length",
+                "T1.2f pH of a solution",
+                "T1.2g Electric current",
+                "T1.2h Electric potential difference",
+                "T1.3 Applying techniques",
+                "T1.3a Preparing a standard solution",
+                "T1.3b Carrying out dilutions",
+                "T1.3c Drying to constant mass",
+                "T1.3d Distillation and reflux",
+                "T1.3e Paper or thin layer chromatography",
+                "T1.3f Separation of mixtures",
+                "T1.3g Calorimetry",
+                "T1.3h Acid–base and redox titration",
+                "T1.3i Electrochemical cells",
+                "T1.3j Colorimetry or spectrophotometry",
+                "T1.3k Physical and digital molecular modelling",
+                "T1.3l Recrystallization",
+                "T1.3m Melting point determination"
+            ],
+            tool2: [
+                "T2.1 Applying technology to collect data",
+                "T2.1a Use of sensors",
+                "T2.1b Identify and extract data from databases",
+                "T2.1c Generate data from models and simulations",
+                "T2.2 Applying technology to process data",
+                "T2.2a Use spreadsheets to manipulate data",
+                "T2.2b Represent data in a graphical form"
+            ],
+            tool3: [
+                "T3.1 Applying general mathematics",
+                "T3.2 Using units, symbols and numerical values",
+                "T3.3 Processing uncertainties",
+                "T3.4 Graphing",
+                "T3.4a Sketch graphs, with labelled but unscaled axes, to qualitatively describe trends",
+                "T3.4b Construct and interpret tables, charts and graphs for raw and processed data including bar charts, histograms, scatter graphs and line and curve graphs",
+                "T3.4c Plot linear and non-linear graphs showing the relationship between two variables with appropriate scales and axes",
+                "T3.4d Draw lines or curves of best fit",
+                "T3.4e Interpret features of graphs including gradient, changes in gradient, intercepts, maxima and minima, and areas",
+                "T3.4f Draw and interpret uncertainty bars",
+                "T3.4g Extrapolate and interpolate graphs"
+            ]
+        };
+
+        const inquiryElements = {
+            I1: [
+                "I1.1 Exploring",
+                "I1.1a Demonstrate independent thinking, initiative, and insight",
+                "I1.1b Consult a variety of sources",
+                "I1.1c Select sufficient and relevant sources of information",
+                "I1.1d Formulate research questions and hypotheses",
+                "I1.1e State and explain predictions using scientific understanding",
+                "I1.2 Designing",
+                "I1.2a Demonstrate creativity in the designing, implementation and presentation of the investigation",
+                "I1.2b Develop investigations that involve hands-on laboratory experiments, databases, simulations, modelling",
+                "I1.2c Identify and justify the choice of dependent, independent and control variables",
+                "I1.2d Justify the range and quantity of measurements",
+                "I1.2e Design and explain a valid methodology",
+                "I1.2f Pilot methodologies",
+                "I1.3 Controlling variables",
+                "I1.3a Appreciate when and how to Calibrate measuring apparatus",
+                "I1.3b Appreciate when and how to Maintain constant environmental conditions of systems",
+                "I1.3c Appreciate when and how to Insulate against heat loss or gain"
+            ],
+            I2: [
+                "I2.1 Collecting data",
+                "I2.1a Identify and record relevant qualitative observations",
+                "I2.1b Collect and record sufficient relevant quantitative data",
+                "I2.1c Identify and address issues that arise during data collection",
+                "I2.2 Processing data",
+                "I2.2a Carry out relevant and accurate data processing",
+                "I2.3 Interpreting results",
+                "I2.3a Interpret qualitative and quantitative data",
+                "I2.3b Interpret diagrams, graphs and charts",
+                "I2.3c Identify, describe and explain patterns, trends and relationships",
+                "I2.3d Identify and justify the removal or inclusion of outliers in data",
+                "I2.3e Assess accuracy, precision, reliability and validity"
+            ],
+            I3: [
+                "I3.1 Concluding",
+                "I3.1a Interpret processed data and analysis to draw and justify conclusions",
+                "I3.1b Compare the outcomes of an investigation to the accepted scientific context",
+                "I3.1c Relate the outcomes of an investigation to the stated research question or hypothesis",
+                "I3.1d Discuss the impact of uncertainties on the conclusions",
+                "I3.2 Evaluating",
+                "I3.2a Evaluate hypotheses",
+                "I3.2b Identify and discuss sources and impacts of random and systematic errors",
+                "I3.2c Evaluate the implications of methodological weaknesses, limitations and assumptions on conclusions",
+                "I3.2d Explain realistic and relevant improvements to an investigation"
+            ]
+        };
+
+        const contentElements = {
+            S1: [
+                "S1.1 Elements are the primary constituents of matter",
+                "S1.2 Atomic structure",
+                "S1.3 Electron arrangement in atoms",
+                "S1.4 Periodic trends",
+                "S1.5 Chemical bonding"
+            ],
+            S2: [
+                "S2.1 Molecular structure",
+                "S2.2 Intermolecular forces",
+                "S2.3 Properties of matter",
+                "S2.4 Solutions"
+            ],
+            S3: [
+                "S3.1 Gas laws",
+                "S3.2 Kinetic molecular theory",
+                "S3.3 Phase changes",
+                "S3.4 Colligative properties"
+            ],
+            R1: [
+                "R1.1 Measuring enthalpy changes",
+                "R1.2 Energy cycles in reactions",
+                "R1.3 Energy from fuels",
+                "R1.4 Entropy and spontaneity"
+            ],
+            R2: [
+                "R2.1 How much? The amount of chemical change",
+                "R2.2 How fast? The rate of chemical change",
+                "R2.3 How far? The extent of chemical change"
+            ],
+            R3: [
+                "R3.1 Proton transfer reactions",
+                "R3.2 Electron transfer reactions",
+                "R3.3 Electron sharing reactions",
+                "R3.4 Electron-pair sharing reactions"
+            ]
+        };
+
+         const standardElements = {
+            "S1.1": [
+                "S1.1.1 Elements are the primary constituents of matter",
+                "S1.1.2 The kinetic molecular theory explains physical properties of matter",
+                "S1.1.3 Temperature in Kelvin is a measure of average kinetic energy of particles"
+            ],
+            "S1.2": [
+                "S1.2.1 Atoms contain a positively charged, dense nucleus composed of protons and neutrons",
+                "S1.2.2 Isotopes are atoms of the same element with different numbers of neutrons",
+                "S1.2.3 Mass spectra are used to determine the relative atomic masses of elements from their isotopic composition"
+            ],
+            "S1.3": [
+                "S1.3.1 Emission spectra are produced by atoms emitting photons when electrons in excited states return to lower energy levels",
+                "S1.3.2 The line emission spectrum of hydrogen provides evidence for the existence of electrons in discrete energy levels",
+                "S1.3.3 The main energy level is given an integer number, n, and can hold a maximum of 2n² electrons",
+                "S1.3.4 A more detailed model of the atom describes the division of the main energy level into sublevels",
+                "S1.3.5 Each orbital has a defined energy state for a given electron configuration and chemical environment",
+                "S1.3.6 In an emission spectrum, the limit of convergence at higher frequency corresponds to ionization",
+                "S1.3.7 Successive ionization energy (IE) data for an element give information about its electron configuration"
+            ],
+            "S1.4": [
+                "S1.4.1 The mole (mol) is the SI unit of amount of substance",
+                "S1.4.2 Masses of atoms are compared on a scale relative to ¹²C and are expressed as relative atomic mass (Ar) and relative formula mass (Mr)",
+                "S1.4.3 Molar mass (M) has the units g mol–1",
+                "S1.4.4 The empirical formula of a compound gives the simplest ratio of atoms of each element present",
+                "S1.4.5 The molar concentration is determined by the amount of solute and the volume of solution",
+                "S1.4.6 Avogadro’s law states that equal volumes of all gases measured under the same conditions of temperature and pressure contain equal numbers of molecules"
+            ],
+            "S1.5": [
+                "S1.5.1 An ideal gas consists of moving particles with negligible volume and no intermolecular forces",
+                "S1.5.2 Real gases deviate from the ideal gas model, particularly at low temperature and high pressure",
+                "S1.5.3 The molar volume of an ideal gas is a constant at a specific temperature and pressure",
+                "S1.5.4 The relationship between the pressure, volume, temperature and amount of an ideal gas is shown in the ideal gas equation PV=nRT and the combined gas law"
+            ],
+            "S2.1": [
+                "S2.1.1 Atoms bond to form molecules",
+                "S2.1.2 Bonding involves the sharing or transfer of electrons",
+                "S2.1.3 The type of bonding influences the properties of substances"
+            ],
+            "S2.2": [
+                "S2.2.1 Intermolecular forces are weaker than intramolecular forces",
+                "S2.2.2 Types of intermolecular forces include van der Waals forces, dipole-dipole interactions, and hydrogen bonding"
+            ],
+            "S2.3": [
+                "S2.3.1 The physical properties of substances are determined by the types of particles and the forces between them",
+                "S2.3.2 Properties include melting point, boiling point, solubility, and electrical conductivity"
+            ],
+            "S2.4": [
+                "S2.4.1 Solutions are homogeneous mixtures",
+                "S2.4.2 The concentration of a solution is a measure of the amount of solute in a given amount of solvent"
+            ],
+            "S3.1": [
+                "S3.1.1 The gas laws describe the behavior of gases",
+                "S3.1.2 The ideal gas law is a mathematical relationship between pressure, volume, temperature, and amount of gas"
+            ],
+            "S3.2": [
+                "S3.2.1 The kinetic molecular theory explains the behavior of gases",
+                "S3.2.2 The theory is based on the idea that gases consist of small particles in constant random motion"
+            ],
+            "S3.3": [
+                "S3.3.1 Phase changes involve the transfer of energy",
+                "S3.3.2 Types of phase changes include melting, freezing, vaporization, condensation, sublimation, and deposition"
+            ],
+            "S3.4": [
+                "S3.4.1 Colligative properties depend on the number of solute particles in a solution",
+                "S3.4.2 Examples include boiling point elevation and freezing point depression"
+            ],
+            "R1.1": [
+                "R1.1.1 Chemical reactions involve a transfer of energy between the system and the surroundings",
+                "R1.1.2 Reactions are described as endothermic or exothermic",
+                "R1.1.3 The relative stability of reactants and products determines whether reactions are endothermic or exothermic",
+                "R1.1.4 The standard enthalpy change for a chemical reaction, ΔH⦵"
+            ],
+            "R1.2": [
+                "R1.2.1 Bond-breaking absorbs and bond-forming releases energy",
+                "R1.2.2 Hess’s law states that the enthalpy change for a reaction is independent of the pathway",
+                "R1.2.3 Standard enthalpy changes of combustion and formation are used in thermodynamic calculations",
+                "R1.2.4 Application of Hess’s law uses enthalpy of formation or combustion data",
+                "R1.2.5 A Born–Haber cycle is an application of Hess’s law for ionic compounds"
+            ],
+            "R1.3": [
+                "R1.3.1 Reactive metals, non-metals and organic compounds undergo combustion reactions",
+                "R1.3.2 Incomplete combustion of organic compounds leads to the production of carbon monoxide and carbon",
+                "R1.3.3 Fossil fuels include coal, crude oil and natural gas",
+                "R1.3.4 Biofuels are produced from the biological fixation of carbon",
+                "R1.3.5 A fuel cell can convert chemical energy from a fuel directly to electrical energy"
+            ],
+            "R2.1": [
+                "R2.1.1 Chemical equations show the ratio of reactants and products",
+                "R2.1.2 The mole ratio of an equation can be used to determine masses and volumes of reactants and products",
+                "R2.1.3 The limiting reactant determines the theoretical yield",
+                "R2.1.4 The percentage yield is calculated from the ratio of experimental yield to theoretical yield",
+                "R2.1.5 The atom economy is a measure of efficiency in green chemistry"
+            ],
+            "R2.2": [
+                "R2.2.1 The rate of reaction is expressed as the change in concentration per unit time",
+                "R2.2.2 Species react as a result of collisions of sufficient energy and proper orientation",
+                "R2.2.3 Factors that influence the rate of a reaction include pressure, concentration, surface area, temperature and the presence of a catalyst",
+                "R2.2.4 Activation energy is the minimum energy needed for a successful collision",
+                "R2.2.5 Catalysts increase the rate of reaction by providing an alternative pathway with lower activation energy"
+            ],
+            "R2.3": [
+                "R2.3.1 A state of dynamic equilibrium is reached in a closed system when the rates of forward and backward reactions are equal",
+                "R2.3.2 The equilibrium law describes how the equilibrium constant can be determined",
+                "R2.3.3 The magnitude of the equilibrium constant indicates the extent of a reaction at equilibrium",
+                "R2.3.4 Le Châtelier’s principle predicts the effects of changes on a system at equilibrium",
+                "R2.3.5 The reaction quotient, Q, is calculated using the equilibrium expression with non-equilibrium concentrations"
+            ],
+            "R3.1": [
+                "R3.1.1 Brønsted–Lowry acids and bases",
+                "R3.1.2 Conjugate acid–base pairs",
+                "R3.1.3 Amphiprotic species",
+                "R3.1.4 The pH scale",
+                "R3.1.5 The ion product constant of water",
+                "R3.1.6 Strong and weak acids and bases",
+                "R3.1.7 Neutralization reactions",
+                "R3.1.8 pH curves for neutralization reactions"
+            ],
+            "R3.2": [
+                "R3.2.1 Oxidation and reduction can be described in terms of electron transfer",
+                "R3.2.2 Half-equations separate oxidation and reduction processes",
+                "R3.2.3 The relative ease of oxidation and reduction of an element can be predicted from its position in the periodic table",
+                "R3.2.4 Acids react with reactive metals to release hydrogen",
+                "R3.2.5 Oxidation occurs at the anode and reduction occurs at the cathode in electrochemical cells"
+            ],
+            "R3.3": [
+                "R3.3.1 Radicals are molecular entities with an unpaired electron",
+                "R3.3.2 Radicals are produced by homolytic fission",
+                "R3.3.3 Radicals take part in substitution reactions with alkanes"
+            ],
+            "R3.4": [
+                "R3.4.1 A nucleophile is a reactant that donates both bonding electrons",
+                "R3.4.2 Nucleophilic substitution reactions",
+                "R3.4.3 Heterolytic fission forms ions",
+                "R3.4.4 An electrophile accepts both bonding electrons",
+                "R3.4.5 Alkenes undergo electrophilic addition reactions",
+                "R3.4.6 A Lewis acid is an electron-pair acceptor",
+                "R3.4.7 Coordination bonds are formed when ligands donate an electron pair",
+                "R3.4.8 Coordination bonds with transition elements",
+                "R3.4.9 Nucleophilic substitution reactions of halogenoalkanes",
+                "R3.4.10 The rate of substitution reactions is influenced by the identity of the leaving group",
+                "R3.4.11 Alkenes undergo electrophilic addition reactions",
+                "R3.4.12 The stability of carbocations",
+                "R3.4.13 Electrophilic substitution reactions of benzene"
+            ]
+        };
+
+        function updateSecondDropdown(type) {
+            let selectElement, elements;
+
+            switch(type) {
+                case 'tool':
+                    selectElement = document.getElementById('toolElementSelect');
+                    elements = toolElements[document.getElementById('toolSelect').value];
+                    break;
+                case 'inquiry':
+                    selectElement = document.getElementById('inquiryElementSelect');
+                    elements = inquiryElements[document.getElementById('inquirySelect').value];
+                    break;
+                case 'content':
+                    selectElement = document.getElementById('contentElementSelect');
+                    elements = contentElements[document.getElementById('contentSelect').value];
+                    break;
+            }
+
+            selectElement.innerHTML = '<option value="">Choose an element...</option>';
+
+            if (elements) {
+                elements.forEach(element => {
+                    const option = document.createElement('option');
+                    option.value = element;
+                    option.textContent = element;
+                    selectElement.appendChild(option);
+                });
+            }
+
+            // Clear the third dropdown when the second dropdown is updated
+            if (type === 'content') {
+                document.getElementById('standardElementSelect').innerHTML = '<option value="">Choose a standard element...</option>';
+            }
+        }
+
+        function updateStandardElements() {
+            const contentElementSelect = document.getElementById('contentElementSelect');
+            const standardElementSelect = document.getElementById('standardElementSelect');
+            const selectedElement = contentElementSelect.value.split(' ')[0]; // Get just the "S1.1" part
+
+            standardElementSelect.innerHTML = '<option value="">Choose a standard element...</option>';
+
+            if (selectedElement && standardElements[selectedElement]) {
+                standardElements[selectedElement].forEach(element => {
+                    const option = document.createElement('option');
+                    option.value = element;
+                    option.textContent = element;
+                    standardElementSelect.appendChild(option);
+                });
+            }
+        }
+
+ function generatePDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Retrieve form data
+    const name = document.getElementById('name').value;
+    const term = document.getElementById('term').value;
+    const grade = document.getElementById('grade').value;
+    const subject = document.getElementById('subject').value;
+    const toolElement = document.getElementById('toolElementSelect').value;
+    const inquiryElement = document.getElementById('inquiryElementSelect').value;
+    const contentElement = document.getElementById('contentElementSelect').value;
+    const standardElement = document.getElementById('standardElementSelect').value;
+    const goalElement = document.getElementById('goalElementSelect').value;
+    const goal = document.getElementById('goal').value;
+    const task = document.getElementById('task').value;
+    const achievementDate = document.getElementById('achievementDate').value;
+    const needs = document.getElementById('needs').value;
+    const studentReflection = document.getElementById('studentReflection').value;
+    const teacherReflection = document.getElementById('teacherReflection').value;
+
+    // Get current date
+    const currentDate = new Date().toLocaleDateString();
+
+    // Set up styles
+    const fontSize = 12;
+    const lineHeight = 10;
+    const margin = 10;
+    const pageWidth = doc.internal.pageSize.width - 2 * margin;
+    const colWidth = pageWidth / 2 - margin / 2; // Reduce spacing between columns
+    doc.setFontSize(fontSize);
+
+    // Add header
+    doc.setFont(undefined, 'bold');
+    doc.setTextColor(0, 84, 147); // Dark blue color
+    doc.text("Personalized Learning Plan", margin, margin);
+
+    // Add date
+    doc.setFont(undefined, 'normal');
+    doc.setTextColor(0);
+    doc.text(`Date: ${currentDate}`, margin + colWidth, margin);
+
+    let y = margin + lineHeight;
+
+    // Add personal info side by side
+    doc.setTextColor(0);
+    doc.setFont(undefined, 'bold');
+    doc.text("Personal Info:", margin, y);
+    doc.setFont(undefined, 'normal');
+    y += lineHeight;
+
+    doc.text(`Name: ${name}`, margin, y);
+    doc.text(`Term: ${term}`, margin + colWidth, y);
+    y += lineHeight;
+    doc.text(`Grade: ${grade}`, margin, y);
+    doc.text(`Subject: ${subject}`, margin + colWidth, y);
+
+    // Add tools and inquiry section
+    y += lineHeight * 2;
+    doc.setFont(undefined, 'bold');
+    doc.text("Tools and Inquiry:", margin, y);
+    doc.setFont(undefined, 'normal');
+    y += lineHeight;
+
+    doc.text(`${toolElement}`, margin, y);
+    y += lineHeight;
+    doc.text(`${inquiryElement}`, margin, y);
+    y += lineHeight;
+    doc.text(`${contentElement}`, margin, y);
+    y += lineHeight;
+    doc.text(`${standardElement}`, margin, y);
+
+    // Add goals and tasks
+    y += lineHeight * 2;
+    doc.setFont(undefined, 'bold');
+    doc.text("Goals and Tasks:", margin, y);
+    doc.setFont(undefined, 'normal');
+    y += lineHeight;
+
+    doc.text(`Modality: ${goalElement}`, margin, y);
+    y += lineHeight;
+    doc.text(`Goal:`, margin, y);
+y += lineHeight;
+doc.text(goal, margin, y, { maxWidth: pageWidth });
+y += lineHeight * Math.ceil(doc.getTextDimensions(goal).h / lineHeight);
+
+doc.text(`Task:`, margin, y);
+y += lineHeight;
+doc.text(task, margin, y, { maxWidth: pageWidth });
+y += lineHeight * Math.ceil(doc.getTextDimensions(task).h / lineHeight);
+
+doc.text(`Achievement Date: ${achievementDate}`, margin, y);
+y += lineHeight;
+
+doc.text(`Needs:`, margin, y);
+y += lineHeight;
+doc.text(needs, margin, y, { maxWidth: pageWidth });
+y += lineHeight * Math.ceil(doc.getTextDimensions(needs).h / lineHeight);
+
+
+    // Add reflections
+    y += lineHeight * 2;
+    doc.setFont(undefined, 'bold');
+    doc.text("Reflections:", margin, y);
+    doc.setFont(undefined, 'normal');
+    y += lineHeight;
+
+    doc.text(`Student Reflection:`, margin, y);
+    y += lineHeight;
+    doc.text(studentReflection, margin, y, { maxWidth: pageWidth });
+    y += lineHeight * 2;
+
+    doc.text(`Teacher Reflection:`, margin, y);
+    y += lineHeight;
+    doc.text(teacherReflection, margin, y, { maxWidth: pageWidth });
+
+    // Save the PDF
+    doc.save('Personalized_Learning_Plan.pdf');
+}
+
+function downloadImage() {
+    html2canvas(document.body).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'Personalized_Learning_Plan.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+}
+    </script>
+</body>
+</html>
